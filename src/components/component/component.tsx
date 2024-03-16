@@ -9,8 +9,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Dropzone } from "../ui/dropzone";
 import { useState, useEffect } from "react";
+import { DataTableDemo, NetworkPackets } from "./Table";
 export function Component() {
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [data, setData] = useState<NetworkPackets[]>([]);
 
   // Function to handle the change in uploaded files
   const handleFileChange: React.Dispatch<React.SetStateAction<string[]>> = (
@@ -38,6 +40,7 @@ export function Component() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setData(data);
       });
   };
 
@@ -58,12 +61,12 @@ export function Component() {
             <div className="grid grid-cols-[1fr_min-content] gap-2 justify-center">
               <Dropzone
                 onChange={handleFileChange} // Pass the handler function
-                fileExtension="pcap" // Set the expected file extension
+                fileExtension="csv" // Set the expected file extension
               />
             </div>
-            <Button
-            onClick={handleAnalyse}
-            size="lg">Analyse</Button>
+            <Button onClick={handleAnalyse} size="lg">
+              Analyse
+            </Button>
 
             {uploadedFiles.length > 0 && (
               <div>
@@ -80,6 +83,7 @@ export function Component() {
           </div>
         </div>
       </div>
+      <DataTableDemo data={data} />
     </section>
   );
 }
