@@ -33,7 +33,7 @@ export function Component() {
     const file = await fetch(filePath).then((res) => res.blob());
     const formData = new FormData();
     formData.append("file", file);
-    const response = await fetch("http://localhost:5000/upload", {
+    await fetch("http://localhost:5000/upload", {
       method: "POST",
       body: formData,
     })
@@ -53,9 +53,46 @@ export function Component() {
               AI based Network Intrusion Detection System
             </h1>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-              The platform that helps you find out whether your network is
-              compromised or not
+              TNN Based Intrusion detection system in mqtt protocol
             </p>
+            <div>
+              {/* team */}
+              <div className="flex items-center justify-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <img
+                    src="https://avatars.githubusercontent.com/u/55926959?s=400&u=4f6f9e3b2e1e5f1c8f3c9a9d4
+                  5e0e2f9a3f4b8a6&v=4"
+                    alt="avatar"
+                    className="w-12 h-12 rounded-full"
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold">Shubham Subodh Rasal</h2>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <img
+                    src="https://avatars.githubusercontent.com/u/55926959?s=400&u=4f6f9e3b2e1e5f1c8f3c9a9d4
+                  5e0e2f9a3f4b8a6&v=4"
+                    alt="avatar"
+                    className="w-12 h-12 rounded-full"
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold">Mohd. Dilshad</h2>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <img
+                    src="https://avatars.githubusercontent.com/u/55926959?s=400&u=4f6f9e3b2e1e5f1c8f3c9a9d4
+                  5e0e2f9a3f4b8a6&v=4"
+                    alt="avatar"
+                    className="w-12 h-12 rounded-full"
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold">Subhojit Karmakar</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="w-full max-w-sm space-y-2">
             <div className="grid grid-cols-[1fr_min-content] gap-2 justify-center">
@@ -68,18 +105,7 @@ export function Component() {
               Analyse
             </Button>
 
-            {uploadedFiles.length > 0 && (
-              <div>
-                <h2>Uploaded Files:</h2>
-                <ul>
-                  {uploadedFiles.map((file, index) => (
-                    <li key={index}>
-                      <Link href={file}>{file}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            
           </div>
         </div>
       </div>

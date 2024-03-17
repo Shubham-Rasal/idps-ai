@@ -103,31 +103,11 @@ export type NetworkPackets = {
   fwd_num_urg_flags: number;
   bwd_num_urg_flags: number;
   is_attack: boolean;
+  prediction: string;
 };
 
 export const columns: ColumnDef<NetworkPackets>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
+  
   {
     accessorKey: "ip_dst",
     header: "Destination IP",
@@ -292,6 +272,12 @@ export const columns: ColumnDef<NetworkPackets>[] = [
     header: "Is Attack",
     cell: ({ row }) => <div>{row.getValue("is_attack")}</div>,
   },
+  {
+    accessorKey: "prediction",
+    header: "Predicted Attack",
+    cell: ({ row }) => <div className={row.getValue("prediction") === "Attack" ? "text-red-500" : "text-green-500"}>{row.getValue("prediction")}</div>,
+    
+  },
 ];
 
 export function DataTableDemo({ data }: { data: NetworkPackets[] }) {
@@ -325,14 +311,7 @@ export function DataTableDemo({ data }: { data: NetworkPackets[] }) {
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter IPs..."
-          value={(table.getColumn("ip_src")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("ip_src")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+        
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
