@@ -37,7 +37,7 @@ export function Component() {
 
     setLoading(true);
 
-    await fetch("http://127.0.0.1:5000/upload", {
+    await fetch("https://idps-ai-backend.onrender.com/upload", {
       method: "POST",
       body: formData,
     })
