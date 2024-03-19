@@ -25,6 +25,10 @@ export default function RootLayout({
               className="w-12 h-12 md:w-16 md:h-16"
             />
           </div>
+
+          <div className="text-white text-2xl font-bold">
+            Department of Information Technology, NITK
+           </div>
           <div className="text-white text-2xl">
             Guided by Prof. Dr. Jaidhar
            </div>

@@ -37,7 +37,7 @@ export function Component() {
 
     setLoading(true);
 
-    await fetch("https://idps-ai-backend.onrender.com/upload", {
+    await fetch("http://127.0.0.1:5000/upload", {
       method: "POST",
       body: formData,
     })
@@ -58,7 +58,10 @@ export function Component() {
               AI based Network Intrusion Detection System
             </h1>
             <p className="mx-auto max-w-[700px] text-gray-700 md:text-xl dark:text-gray-400">
-              TNN Based Intrusion detection system in mqtt protocol
+              TNN Based Intrusion detection system in MQTT protocol
+            </p>
+            <p className="mx-auto max-w-[700px] text-gray-700 md:text-xl dark:text-gray-400">
+              Implemented by
             </p>
             <div>
               {/* team */}
