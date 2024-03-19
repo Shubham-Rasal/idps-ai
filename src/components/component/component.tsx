@@ -29,7 +29,8 @@ export function Component() {
 
   //function to save the file on the server
   const handleAnalyse = async () => {
-    const filePath = uploadedFiles[0];
+    //get the last file uploaded
+    const filePath = uploadedFiles[uploadedFiles.length - 1];
     const file = await fetch(filePath).then((res) => res.blob());
     const formData = new FormData();
     formData.append("file", file);
